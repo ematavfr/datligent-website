@@ -1,0 +1,46 @@
+# Configuration Docker Compose pour l'environnement de staging
+version: '3.8'
+
+services:
+  # Service web principal - configuration de staging
+  datligent-web:
+    environment:
+      - VIRTUAL_HOST=staging.servops.datligent.fr
+      - LETSENCRYPT_HOST=staging.servops.datligent.fr
+      - LETSENCRYPT_EMAIL=contact@datligent.fr
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.datligent-staging.rule=Host(`staging.servops.datligent.fr`)"
+      - "traefik.http.routers.datligent-staging.tls=true"
+      - "traefik.http.routers.datligent-staging.tls.certresolver=letsencrypt"
+      - "traefik.http.services.datligent-staging.loadbalancer.server.port=80"
+
+  # Traefik avec logs détaillés pour staging
+  traefik:
+    command:
+      - --log.level=INFO
+      - --accesslog=true
+      - --accesslog.filepath=/var/log/traefik/access.log
+      - --accesslog.format=json
+    volumes:
+      - ./logs/traefik:/var/log/traefik
+
+  # Monitoring simplifié pour staging
+  prometheus:
+    environment:
+      - PROMETHEUS_RETENTION_TIME=72h
+
+  grafana:
+    environment:
+      - GF_SERVER_DOMAIN=dashboard-staging.servops.datligent.fr
+      - GF_SERVER_ROOT_URL=https://dashboard-staging.servops.datligent.fr
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.grafana-staging.rule=Host(`dashboard-staging.servops.datligent.fr`)"
+      - "traefik.http.routers.grafana-staging.tls=true"
+      - "traefik.http.routers.grafana-staging.tls.certresolver=letsencrypt"
+
+  # Désactiver les sauvegardes en staging
+  backup:
+    profiles:
+      - production
