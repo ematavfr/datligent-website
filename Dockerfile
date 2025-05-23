@@ -18,14 +18,16 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 # Copie du site web
 COPY index.html /usr/share/nginx/html/
-COPY assets/ /usr/share/nginx/html/assets/ 2>/dev/null || true
+
+# Copie conditionnelle des assets (seulement s'ils existent)
+COPY assets* /usr/share/nginx/html/ 2>/dev/null || true
 
 # Configuration NGINX personnalisée
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 
 # Création des répertoires nécessaires
-RUN mkdir -p /var/log/nginx /var/cache/nginx
+RUN mkdir -p /var/log/nginx /var/cache/nginx /usr/share/nginx/html/assets
 
 # Permissions
 RUN chown -R nginx:nginx /usr/share/nginx/html /var/log/nginx /var/cache/nginx
