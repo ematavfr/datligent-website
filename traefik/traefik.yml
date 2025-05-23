@@ -1,0 +1,77 @@
+# Configuration principale Traefik
+api:
+  dashboard: true
+  debug: true
+  insecure: false
+
+# Points d'entrée
+entryPoints:
+  web:
+    address: ":80"
+    http:
+      redirections:
+        entrypoint:
+          to: websecure
+          scheme: https
+          permanent: true
+  
+  websecure:
+    address: ":443"
+
+# Providers
+providers:
+  docker:
+    endpoint: "unix:///var/run/docker.sock"
+    exposedByDefault: false
+    network: datligent-network
+  
+  file:
+    filename: /etc/traefik/dynamic.yml
+    watch: true
+
+# Résolveurs de certificats
+certificatesResolvers:
+  letsencrypt:
+    acme:
+      email: contact@datligent.fr
+      storage: /ssl-certs/acme.json
+      keyType: EC256
+      # Challenge HTTP (recommandé)
+      httpChallenge:
+        entryPoint: web
+      # Alternative: Challenge DNS (pour Cloudflare)
+      # dnsChallenge:
+      #   provider: cloudflare
+      #   resolvers:
+      #     - "1.1.1.1:53"
+      #     - "8.8.8.8:53"
+
+# Logging
+log:
+  level: INFO
+  format: json
+
+accessLog:
+  format: json
+  fields:
+    defaultMode: keep
+    names:
+      ClientUsername: drop
+    headers:
+      defaultMode: keep
+      names:
+        User-Agent: redact
+        Authorization: drop
+        Content-Type: keep
+
+# Métriques
+metrics:
+  prometheus:
+    addEntryPointsLabels: true
+    addServicesLabels: true
+    addRoutersLabels: true
+
+# Global configuration
+global:
+  checkNewVersion: false
+  sendAnonymousUsage: false
