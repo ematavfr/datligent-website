@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DATLIGENT - Expert DevOps & MLOps</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#2563eb',
+                        'secondary-blue': '#3b82f6',
+                        'light-gray': '#f8fafc',
+                        'medium-gray': '#64748b'
+                    }
+                }
+            }
+        }
+    </script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-white">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold text-primary-blue">DATLIGENT</h1>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#accueil" class="text-gray-700 hover:text-primary-blue transition-colors">Accueil</a>
+                    <a href="#services" class="text-gray-700 hover:text-primary-blue transition-colors">Services</a>
+                    <a href="#certifications" class="text-gray-700 hover:text-primary-blue transition-colors">Certifications</a>
+                    <a href="#apropos" class="text-gray-700 hover:text-primary-blue transition-colors">À propos</a>
+                    <a href="#contact" class="bg-primary-blue text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">Contact</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-500 hover:text-gray-600">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#accueil" class="block px-3 py-2 text-gray-700">Accueil</a>
+                <a href="#services" class="block px-3 py-2 text-gray-700">Services</a>
+                <a href="#certifications" class="block px-3 py-2 text-gray-700">Certifications</a>
+                <a href="#apropos" class="block px-3 py-2 text-gray-700">À propos</a>
+                <a href="#contact" class="block px-3 py-2 text-gray-700">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="pt-16 bg-gradient-to-br from-light-gray to-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
+                    <span class="text-primary-blue">DATLIGENT</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-medium-gray mb-8 max-w-3xl mx-auto">
+                    Expert DevOps & MLOps - Transformez votre infrastructure en plateforme intelligente
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#services" class="bg-primary-blue text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-all transform hover:scale-105">
+                        Découvrir nos services
+                    </a>
+                    <a href="#contact" class="border-2 border-primary-blue text-primary-blue px-8 py-4 rounded-lg text-lg font-semibold hover:bg-primary-blue hover:text-white transition-all">
+                        Nous contacter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Nos Services</h2>
+                <p class="text-xl text-medium-gray max-w-3xl mx-auto">
+                    Solutions complètes pour moderniser votre infrastructure et accélérer votre transformation digitale
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Kubernetes & OpenShift -->
+                <div class="bg-light-gray p-8 rounded-xl hover:shadow-lg transition-shadow">
+                    <div class="text-primary-blue text-4xl mb-4">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Kubernetes & OpenShift</h3>
+                    <p class="text-medium-gray mb-4">
+                        Orchestration de conteneurs, déploiement et gestion d'applications cloud-native sur plateformes Kubernetes et OpenShift.
+                    </p>
+                    <ul class="text-medium-gray space-y-2">
+                        <li>• Architecture et déploiement de clusters</li>
+                        <li>• Migration d'applications</li>
+                        <li>• Optimisation des performances</li>
+                        <li>• Monitoring et observabilité</li>
+                    </ul>
+                </div>
+
+                <!-- Linux & Systèmes -->
+                <div class="bg-light-gray p-8 rounded-xl hover:shadow-lg transition-shadow">
+                    <div class="text-primary-blue text-4xl mb-4">
+                        <i class="fab fa-linux"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Linux & Systèmes</h3>
+                    <p class="text-medium-gray mb-4">
+                        Administration avancée de systèmes Linux, optimisation des performances et sécurisation des environnements.
+                    </p>
+                    <ul class="text-medium-gray space-y-2">
+                        <li>• Administration système Linux</li>
+                        <li>• Sécurisation et hardening</li>
+                        <li>• Optimisation des performances</li>
+                        <li>• Scripts d'automatisation</li>
+                    </ul>
+                </div>
+
+                <!-- Ansible Automation -->
+                <div class="bg-light-gray p-8 rounded-xl hover:shadow-lg transition-shadow">
+                    <div class="text-primary-blue text-4xl mb-4">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Ansible Automation</h3>
+                    <p class="text-medium-gray mb-4">
+                        Automatisation complète de vos infrastructures avec Ansible pour des déploiements fiables et reproductibles.
+                    </p>
+                    <ul class="text-medium-gray space-y-2">
+                        <li>• Playbooks et rôles Ansible</li>
+                        <li>• Automatisation des déploiements</li>
+                        <li>• Configuration management</li>
+                        <li>• Intégration CI/CD</li>
+                    </ul>
+                </div>
+
+                <!-- OpenShift AI & MLOps -->
+                <div class="bg-gradient-to-br from-primary-blue to-secondary-blue p-8 rounded-xl text-white hover:shadow-lg transition-shadow">
+                    <div class="text-white text-4xl mb-4">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">OpenShift AI & MLOps</h3>
+                    <p class="text-blue-100 mb-4">
+                        Transformation de votre cluster OpenShift en plateforme DevOps et MLOps complète pour les équipes data.
+                    </p>
+                    <ul class="text-blue-100 space-y-2">
+                        <li>• Plateforme MLOps end-to-end</li>
+                        <li>• Pipeline d'entraînement de modèles</li>
+                        <li>• Déploiement de modèles en production</li>
+                        <li>• Gouvernance et monitoring IA</li>
+                    </ul>
+                </div>
+
+                <!-- DevOps & CI/CD -->
+                <div class="bg-light-gray p-8 rounded-xl hover:shadow-lg transition-shadow">
+                    <div class="text-primary-blue text-4xl mb-4">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">DevOps & CI/CD</h3>
+                    <p class="text-medium-gray mb-4">
+                        Mise en place de pipelines CI/CD robustes et de pratiques DevOps pour accélérer vos livraisons.
+                    </p>
+                    <ul class="text-medium-gray space-y-2">
+                        <li>• Pipelines CI/CD automatisés</li>
+                        <li>• GitOps et déploiements</li>
+                        <li>• Tests automatisés</li>
+                        <li>• Monitoring et alerting</li>
+                    </ul>
+                </div>
+
+                <!-- Consulting & Formation -->
+                <div class="bg-light-gray p-8 rounded-xl hover:shadow-lg transition-shadow">
+                    <div class="text-primary-blue text-4xl mb-4">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-4">Consulting & Formation</h3>
+                    <p class="text-medium-gray mb-4">
+                        Accompagnement stratégique et formation de vos équipes sur les technologies cloud-native et DevOps.
+                    </p>
+                    <ul class="text-medium-gray space-y-2">
+                        <li>• Audit d'architecture</li>
+                        <li>• Stratégie de transformation</li>
+                        <li>• Formation technique</li>
+                        <li>• Transfert de compétences</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section id="certifications" class="py-20 bg-light-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Certifications</h2>
+                <p class="text-xl text-medium-gray">
+                    Expertise certifiée Red Hat et technologies cloud-native
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-shadow">
+                    <div class="text-red-600 text-4xl mb-4">
+                        <i class="fab fa-redhat"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">OpenShift AI</h3>
+                    <p class="text-sm text-medium-gray">Spécialiste certifié Red Hat OpenShift AI</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-shadow">
+                    <div class="text-red-600 text-4xl mb-4">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">OpenShift</h3>
+                    <p class="text-sm text-medium-gray">Expert Red Hat OpenShift Administration</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-shadow">
+                    <div class="text-red-600 text-4xl mb-4">
+                        <i class="fab fa-linux"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">RHEL</h3>
+                    <p class="text-sm text-medium-gray">Red Hat Enterprise Linux Certified</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl text-center hover:shadow-lg transition-shadow">
+                    <div class="text-red-600 text-4xl mb-4">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Ansible</h3>
+                    <p class="text-sm text-medium-gray">Red Hat Ansible Automation Specialist</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- À propos Section -->
+    <section id="apropos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-bold text-gray-900 mb-6">À propos de DATLIGENT</h2>
+                    <p class="text-lg text-medium-gray mb-6">
+                        DATLIGENT est une entreprise spécialisée dans l'accompagnement des organisations dans leur transformation digitale. 
+                        En tant qu'ingénieur informatique certifié Red Hat, je propose des services d'expertise technique de haut niveau 
+                        dans les domaines du DevOps, MLOps et de l'infrastructure cloud-native.
+                    </p>
+                    <p class="text-lg text-medium-gray mb-6">
+                        Ma dernière certification Red Hat OpenShift AI me permet de transformer votre cluster OpenShift en une 
+                        plateforme complète DevOps et MLOps, permettant aux équipes data de développer, entraîner et déployer 
+                        leurs modèles d'intelligence artificielle en production.
+                    </p>
+                    <div class="flex flex-wrap gap-4">
+                        <span class="bg-primary-blue text-white px-4 py-2 rounded-full text-sm">Kubernetes</span>
+                        <span class="bg-primary-blue text-white px-4 py-2 rounded-full text-sm">OpenShift</span>
+                        <span class="bg-primary-blue text-white px-4 py-2 rounded-full text-sm">Ansible</span>
+                        <span class="bg-primary-blue text-white px-4 py-2 rounded-full text-sm">Linux</span>
+                        <span class="bg-primary-blue text-white px-4 py-2 rounded-full text-sm">MLOps</span>
+                        <span class="bg-primary-blue text-white px-4 py-2 rounded-full text-sm">DevOps</span>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="bg-gradient-to-br from-primary-blue to-secondary-blue p-8 rounded-2xl text-white">
+                        <i class="fas fa-award text-6xl mb-4"></i>
+                        <h3 class="text-2xl font-bold mb-2">Expert Certifié</h3>
+                        <p class="text-blue-100">
+                            Certifications Red Hat multiples incluant la nouvelle certification OpenShift AI
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-light-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Contactez-nous</h2>
+                <p class="text-xl text-medium-gray">
+                    Prêt à transformer votre infrastructure ? Discutons de votre projet.
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Parlons de votre projet</h3>
+                    <p class="text-medium-gray mb-8">
+                        Que vous souhaitiez moderniser votre infrastructure, implémenter une plateforme MLOps 
+                        ou former vos équipes, je suis là pour vous accompagner.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center">
+                            <div class="bg-primary-blue text-white p-3 rounded-lg mr-4">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Email</h4>
+                                <p class="text-medium-gray">contact@datligent.fr</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-primary-blue text-white p-3 rounded-lg mr-4">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">Téléphone</h4>
+                                <p class="text-medium-gray">+33 X XX XX XX XX</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="bg-primary-blue text-white p-3 rounded-lg mr-4">
+                                <i class="fab fa-linkedin"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-900">LinkedIn</h4>
+                                <p class="text-medium-gray">linkedin.com/in/datligent</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <form id="contact-form">
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Nom complet</label>
+                            <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-blue">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Email</label>
+                            <input type="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-blue">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Entreprise</label>
+                            <input type="text" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-blue">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label class="block text-gray-700 text-sm font-bold mb-2">Message</label>
+                            <textarea rows="4" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-primary-blue"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary-blue text-white py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="col-span-2">
+                    <h3 class="text-2xl font-bold text-primary-blue mb-4">DATLIGENT</h3>
+                    <p class="text-gray-300 mb-4">
+                        Expert DevOps & MLOps - Transformez votre infrastructure en plateforme intelligente
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-primary-blue">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-primary-blue">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#" class="hover:text-primary-blue">Kubernetes</a></li>
+                        <li><a href="#" class="hover:text-primary-blue">OpenShift</a></li>
+                        <li><a href="#" class="hover:text-primary-blue">Ansible</a></li>
+                        <li><a href="#" class="hover:text-primary-blue">MLOps</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li>contact@datligent.fr</li>
+                        <li>+33 X XX XX XX XX</li>
+                        <li>France</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-300">
+                <p>&copy; 2025 DATLIGENT. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message ! Nous vous contacterons bientôt.');
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('bg-white/95', 'backdrop-blur');
+            } else {
+                nav.classList.remove('bg-white/95', 'backdrop-blur');
+            }
+        });
+    </script>
+</body>
+</html>
