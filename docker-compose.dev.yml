@@ -1,0 +1,48 @@
+# Configuration Docker Compose pour l'environnement de développement
+version: '3.8'
+
+services:
+  # Service web principal - configuration de développement
+  datligent-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html:ro
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    environment:
+      - DEBUG=true
+    ports:
+      - "8080:80"  # Port direct pour le développement
+
+  # Traefik avec configuration simplifiée pour le développement
+  traefik:
+    command:
+      - --api.dashboard=true
+      - --api.insecure=true
+      - --providers.docker=true
+      - --providers.docker.exposedbydefault=false
+      - --entrypoints.web.address=:80
+      - --log.level=DEBUG
+    ports:
+      - "8081:8080"  # Dashboard accessible sur localhost:8081
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+
+  # Désactiver certains services en développement
+  prometheus:
+    profiles:
+      - monitoring
+
+  grafana:
+    profiles:
+      - monitoring
+
+  influxdb:
+    profiles:
+      - monitoring
+
+  backup:
+    profiles:
+      - production
