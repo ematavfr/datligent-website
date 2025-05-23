@@ -1,0 +1,71 @@
+# Configuration dynamique Traefik
+http:
+  middlewares:
+    # Middleware de sécurité
+    security-headers:
+      headers:
+        accessControlAllowMethods:
+          - GET
+          - OPTIONS
+          - PUT
+        accessControlMaxAge: 100
+        hostsProxyHeaders:
+          - "X-Forwarded-Host"
+        referrerPolicy: "same-origin"
+        customRequestHeaders:
+          X-Forwarded-Proto: "https"
+        customResponseHeaders:
+          X-Robots-Tag: "none,noarchive,nosnippet,notranslate,noimageindex"
+          X-Frame-Options: "DENY"
+          X-Content-Type-Options: "nosniff"
+          Referrer-Policy: "same-origin"
+          Feature-Policy: "camera 'none'; microphone 'none'; geolocation 'none'"
+          Permissions-Policy: "camera=(), microphone=(), geolocation=()"
+
+    # Compression
+    compression:
+      compress: true
+
+    # Rate limiting
+    rate-limit:
+      rateLimit:
+        burst: 100
+        period: 1m
+
+    # Authentification pour les services d'administration
+    auth:
+      basicAuth:
+        users:
+          - "admin:$2y$10$K1XHGz7HyLAaxlE8mRNZz.Nr6vUYdHfL6.r1S3NZhBo2CrB1Dx0Ey"  # admin:datligent2025
+
+    # Redirection www vers non-www
+    redirect-to-non-www:
+      redirectRegex:
+        regex: "^https://www\\.(.+)"
+        replacement: "https://${1}"
+        permanent: true
+
+    # Middleware pour les métriques
+    metrics:
+      addPrefix:
+        prefix: "/metrics"
+
+# Configuration TLS
+tls:
+  options:
+    default:
+      sslProtocols:
+        - "TLSv1.2"
+        - "TLSv1.3"
+      cipherSuites:
+        - "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384"
+        - "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305"
+        - "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
+        - "TLS_RSA_WITH_AES_256_GCM_SHA384"
+        - "TLS_RSA_WITH_AES_128_GCM_SHA256"
+      minVersion: "VersionTLS12"
+
+# Certificats personnalisés (si nécessaire)
+# certificates:
+#   - certFile: /ssl-certs/servops.datligent.fr.crt
+#     keyFile: /ssl-certs/servops.datligent.fr.key
