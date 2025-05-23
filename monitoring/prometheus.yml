@@ -1,0 +1,43 @@
+# Configuration Prometheus pour monitoring DATLIGENT
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+
+scrape_configs:
+  # Monitoring de Prometheus lui-même
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Monitoring de Traefik
+  - job_name: 'traefik'
+    static_configs:
+      - targets: ['traefik:8080']
+    metrics_path: /metrics
+
+  # Monitoring NGINX (via nginx-prometheus-exporter si déployé)
+  - job_name: 'nginx'
+    static_configs:
+      - targets: ['datligent-web:9113']
+    metrics_path: /metrics
+
+  # Monitoring Docker (via cAdvisor si déployé)
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
+
+  # Monitoring du système (via node-exporter si déployé)
+  - job_name: 'node'
+    static_configs:
+      - targets: ['node-exporter:9100']
+
+  # Health check du site web
+  - job_name: 'datligent-website'
+    static_configs:
+      - targets: ['datligent-web:80']
+    metrics_path: /health
+    scrape_interval: 30s
