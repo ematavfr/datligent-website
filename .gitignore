@@ -1,0 +1,58 @@
+# Fichiers d'environnement
+.env
+.env.local
+.env.production
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Docker
+.dockerignore
+
+# Certificats SSL
+ssl-certs/
+*.pem
+*.crt
+*.key
+
+# Sauvegardes
+backups/
+*.tar.gz
+*.zip
+
+# Volumes Docker
+volumes/
+
+# Monitoring data
+prometheus-data/
+grafana-data/
+influxdb-data/
+
+# Fichiers temporaires
+*.tmp
+*.temp
+.cache/
+
+# Éditeurs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Secrets et clés API
+secrets/
+*.secret
+api-keys.txt
+
+# Fichiers de configuration locale
+local.yml
+override.yml
